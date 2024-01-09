@@ -5,10 +5,10 @@ test('Log in with invalid credentials at Zara', async ({ browser }) => {
     const page = await context.newPage();
 
     // Navigate to Zara's online page and wait for it to load
-    await page.goto('https://www.zara.com/ba/', { waitUntil: 'domcontentloaded' });
+    await page.goto('https://www.zara.com/ba/en/', { waitUntil: 'domcontentloaded' });
 
     // Step 2: Click on "Log in" button
-    await page.click('text=PRIJAVI SE');
+    await page.click('text=LOG IN');
 
     // Step 3: Enter valid Email address
     await page.fill('input.zds-input-base__input[name="logonId"][type="text"]', 'farisomerbasic@hotmail.com');
@@ -17,7 +17,7 @@ test('Log in with invalid credentials at Zara', async ({ browser }) => {
     await page.fill('input.zds-input-base__input[name="password"][type="password"]', 'gbd');
 
     // Step 5: Attempt to log in with invalid credentials
-    await page.click('text=PRIJAVI SE');
+    await page.click('div.zds-button__lines-wrapper >> text=LOG IN');
 
     // Handle potential navigation or waiting for the selector
     await Promise.race([
@@ -31,13 +31,10 @@ test('Log in with invalid credentials at Zara', async ({ browser }) => {
         console.log('Warning Message: ', warningMessage);
 
         // Assertions 
-        expect(warningMessage).toContain('Korisničko ime i lozinka ne odgovaraju nijednom računu na internetskoj stranici Zara.com.');
+        expect(warningMessage).toContain('The user name and password provided do not correspond to any account at Zara.com.');
     } else {
         console.log('Warning message did not appear');
     }
-
-
-
 
     // Close context 
     await context.close();
