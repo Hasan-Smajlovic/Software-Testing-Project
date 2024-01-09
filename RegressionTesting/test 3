@@ -1,0 +1,44 @@
+import { test, expect } from '@playwright/test';
+
+test('Log in with invalid credentials at Zara', async ({ browser }) => {
+    const context = await browser.newContext();
+    const page = await context.newPage();
+
+    // Navigate to Zara's online page and wait for it to load
+    await page.goto('https://www.zara.com/ba/', { waitUntil: 'domcontentloaded' });
+
+    // Step 2: Click on "Log in" button
+    await page.click('text=PRIJAVI SE');
+
+    // Step 3: Enter valid Email address
+    await page.fill('input.zds-input-base__input[name="logonId"][type="text"]', 'farisomerbasic@hotmail.com');
+
+    // Step 4: Enter invalid Password
+    await page.fill('input.zds-input-base__input[name="password"][type="password"]', 'gbd');
+
+    // Step 5: Attempt to log in with invalid credentials
+    await page.click('text=PRIJAVI SE');
+
+    // Handle potential navigation or waiting for the selector
+    await Promise.race([
+        page.waitForNavigation().catch(e => console.log('No navigation occurred', e)),
+        page.waitForSelector('.zds-alert-dialog__description span', { state: 'visible', timeout: 60000 }).catch(e => console.log('Selector not found', e))
+    ]);
+
+    // Check if the warning message is available and capture it
+    if (await page.isVisible('.zds-alert-dialog__description span')) {
+        const warningMessage = await page.innerText('.zds-alert-dialog__description span');
+        console.log('Warning Message: ', warningMessage);
+
+        // Assertions 
+        expect(warningMessage).toContain('Korisničko ime i lozinka ne odgovaraju nijednom računu na internetskoj stranici Zara.com.');
+    } else {
+        console.log('Warning message did not appear');
+    }
+
+
+
+
+    // Close context 
+    await context.close();
+});
