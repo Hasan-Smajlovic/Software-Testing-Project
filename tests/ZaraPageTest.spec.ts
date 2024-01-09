@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import ZaraLoginPage from "../pages/ZaraLoginPage/ZaraLoginPage"
 
+//test
 test('Zara login test', async ({page}) => {
     const zaraPage = new ZaraLoginPage(page);
     await zaraPage.openPage();
