@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import ZaraLoginPage from '../RegressionTesting/ZaraSearchPageRegression7';
+import ZaraLoginPage from '../pages/ZaraSearchPageRegression7';
 
 test('Test that searching items on Zara webpage works', async ({ browser }) => {
     const context = await browser.newContext();

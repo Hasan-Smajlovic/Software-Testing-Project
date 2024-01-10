@@ -1,6 +1,6 @@
 import { Page } from "playwright";
 
-class test1 {
+class ZaraCheckBoxErrorRegression1 {
   private page: Page;
 
   constructor(page: Page) {
@@ -144,4 +144,4 @@ class test1 {
   }
 }
 
-export default test1;
+export default ZaraCheckBoxErrorRegression1;

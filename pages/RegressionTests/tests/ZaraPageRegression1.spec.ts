@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import test1 from "../pages/ZaraCheckboxErrorRegression1";
+import ZaraCheckboxErrorRegression1 from "../pages/ZaraCheckboxErrorRegression1";
 
 test('Zara register test', async ({page}) => {
-    const zaraPage = new test1(page);
+    const zaraPage = new ZaraCheckboxErrorRegression1(page);
     await zaraPage.openPage();
     await zaraPage.clickLogInButton();
     await zaraPage.clickRegisterButton();

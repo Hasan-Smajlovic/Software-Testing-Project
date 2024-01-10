@@ -4,7 +4,7 @@ class ZaraLoginPage {
     private page: Page;
 
     constructor(page: Page){
-        this.page = page;  
+        this.page = page;
     }
 
     async openPage(){
@@ -17,7 +17,6 @@ class ZaraLoginPage {
     }
 
     async clickLogInButton() {
-    
         const logInButtonSelector = 'a[href="https://www.zara.com/ba/en/logon"]';
 
         await this.page.waitForSelector(logInButtonSelector);
@@ -74,7 +73,6 @@ class ZaraLoginPage {
 
     async waitForPageLoad() {
         await this.page.waitForLoadState("domcontentloaded");
-        
     }
 
 }

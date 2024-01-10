@@ -4,7 +4,7 @@ class ZaraRegisterPage {
     private page: Page;
 
     constructor(page: Page){
-        this.page = page; 
+        this.page = page;
     }
 
     async openPage(){
