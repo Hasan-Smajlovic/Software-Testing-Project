@@ -15,6 +15,17 @@ test('Zara register test', async ({page}) => {
     await zaraPage.checkPrivacyCheckbox();
     await zaraPage.clickCreateAccount();
     await zaraPage.waitForPageLoad();
+    // await zaraPage.clickSecondLogInButton();
+    // await zaraPage.clickRegisterButton();
+    // await zaraPage.inputEmail('faksfakss65@gmail.com');
+    // await zaraPage.inputPassword('Pasword123456789');
+    // await zaraPage.fillNameField('Mudja');
+    // await zaraPage.surname('Cale');
+    // await zaraPage.phonePrefix('+387');
+    // await zaraPage.phone('61413138');
+    // await zaraPage.checkPrivacyCheckbox();
+    // await zaraPage.clickCreateAccount();
+    // await zaraPage.waitForPageLoad();
 
     await page.pause();
 
