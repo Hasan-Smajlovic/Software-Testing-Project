@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import ZaraItemOrderPage from '../pages/ZaraItemOrderPage';
+import ZaraItemOrderPage from '../pages/ZaraItemOrderPage3';
 
 test('Zara login test', async ({page}) => {
     const zaraPage = new ZaraItemOrderPage(page);

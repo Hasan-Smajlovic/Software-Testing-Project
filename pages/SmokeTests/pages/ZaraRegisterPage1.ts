@@ -1,13 +1,13 @@
-import { Page } from "playwright"
+import {Page } from "playwright"
 
 class ZaraRegisterPage {
     private page: Page;
 
-    constructor(page: Page) {
-        this.page = page;
+    constructor(page: Page){
+        this.page = page; 
     }
 
-    async openPage() {
+    async openPage(){
         await this.page.goto('https://www.zara.com/ba/en/');
         await this.page.waitForLoadState("domcontentloaded");
     }
@@ -17,7 +17,6 @@ class ZaraRegisterPage {
     }
 
     async clickLogInButton() {
-
         const logInButtonSelector = 'a[href="https://www.zara.com/ba/en/logon"]';
 
         await this.page.waitForSelector(logInButtonSelector);
@@ -36,22 +35,17 @@ class ZaraRegisterPage {
     async clickRegisterButton() {
         // Define the selector using the data-qa-action attribute for precision
         const RegisterButtonSelector = '[data-qa-action="logon-view-alternate-button"]';
-
         await this.page.waitForSelector(RegisterButtonSelector, { state: 'visible' });
-
         // Click the button, no need to retrieve it first
         await this.page.click(RegisterButtonSelector, { force: true });
         // Optionally, you may want to wait for a specific condition after clicking the button
         await this.page.waitForLoadState("networkidle");
     }
 
-
-
     async inputEmail(email: string) {
         const emailIdSelector = '#email63';  // Selector using ID
         await this.page.waitForSelector(emailIdSelector, { state: 'visible' });  // Ensure the element is visible before interacting
         const emailField = await this.page.$(emailIdSelector);
-
         if (emailField) {
             await emailField.fill(email);
         } else {
@@ -74,10 +68,8 @@ class ZaraRegisterPage {
     async fillNameField(firstName: string) {
         // Define the selector to use the ID of the input field
         const nameIdSelector = '#firstName71';
-
         await this.page.waitForSelector(nameIdSelector);
         const nameField = await this.page.$(nameIdSelector);
-
         if (nameField) {
             await nameField.fill(firstName);
         } else {
@@ -89,7 +81,6 @@ class ZaraRegisterPage {
         const surnameIdSelector = '#lastName75';  // Corrected to use the right variable name and removed unnecessary quotes
         await this.page.waitForSelector(surnameIdSelector);
         const surnameField = await this.page.$(surnameIdSelector);
-
         if (surnameField) {
             await surnameField.fill(surname);
         } else {
@@ -97,19 +88,16 @@ class ZaraRegisterPage {
         }
     }
 
-
     async phonePrefix(prefix: string) {
         const prefixIdSelector = '#phone\\.prefix79';  // Correctly escaped period in the ID
         await this.page.waitForSelector(prefixIdSelector, { state: 'visible' });  // Ensure the element is visible
         const prefixField = await this.page.$(prefixIdSelector);
-
         if (prefixField) {
             await prefixField.fill(prefix);
         } else {
             console.error('Prefix field not found.');
         }
     }
-
 
     async phone(number: string) {
         const phoneNumberIdSelector = '#phone\\.number83';  // Correctly escaped period in the ID
@@ -148,24 +136,6 @@ class ZaraRegisterPage {
             console.error('Create Account button not found.');
         }
     }
-
-    // async clickSecondLogInButton() {
-
-    //     const secondLogInButtonSelector = 'a[href="https://www.zara.com/ba/en/logon"]';
-
-    //     await this.page.waitForSelector(secondLogInButtonSelector);
-
-    //     const secondLogInButton = await this.page.$(secondLogInButtonSelector);
-
-    //     if (secondLogInButton) {
-    //         await secondLogInButton.click();
-    //         // Optionally, you may want to wait for a specific condition after clicking the button
-    //         await this.page.waitForLoadState("networkidle");
-    //     } else {
-    //         console.error('Log In button not found.');
-    //     }
-    // }
-
 
     async waitForPageLoad() {
         await this.page.waitForLoadState("domcontentloaded");

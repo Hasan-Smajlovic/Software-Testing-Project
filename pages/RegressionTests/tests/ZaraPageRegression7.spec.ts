@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
-import ZaraSearchPage from '../pages/ZaraSearchPage';
+import ZaraLoginPage from '../RegressionTesting/ZaraSearchPageRegression7';
 
 test('Test that searching items on Zara webpage works', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
-    const zaraSearchPage = new ZaraSearchPage(page);
+    const zaraSearchPage = new ZaraLoginPage(page);
 
     await zaraSearchPage.navigateToZara();
     await zaraSearchPage.clickSearchBar();

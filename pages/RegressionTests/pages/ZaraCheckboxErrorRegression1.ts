@@ -123,18 +123,6 @@ class test1 {
     }
   }
 
-  //   async checkPrivacyCheckbox() {
-  //     // JavaScript code to click the checkbox
-  //     await this.page.evaluate(() => {
-  //       const checkbox = document.querySelector(
-  //         'input[type="checkbox"][name="privacyCheck"]'
-  //       ) as HTMLInputElement;
-  //       if (checkbox) {
-  //         checkbox.click(); // This will trigger a click regardless of CSS visibility
-  //       }
-  //     });
-  //   }
-
   async clickCreateAccount() {
     // Use the data-qa-action attribute to find the Create Account button
     const createAccountButtonSelector = '[data-qa-action="sign-up-submit"]';

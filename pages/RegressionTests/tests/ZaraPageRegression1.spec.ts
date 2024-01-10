@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import test1 from "../RegressionTesting/test1";
+import test1 from "../pages/ZaraCheckboxErrorRegression1";
 
 test('Zara register test', async ({page}) => {
     const zaraPage = new test1(page);
@@ -16,6 +16,6 @@ test('Zara register test', async ({page}) => {
     await zaraPage.waitForPageLoad();
     await page.pause();
 
-    // Assert that the current URL contains the expected path
-    expect(await zaraPage.getCurrentUrl()).toContain('https://www.zara.com/ba/en/error/invalid-session');
-})
+    // Assertion: Check if the Privacy Policy acceptance warning is visible
+  await expect(page.locator('span:has-text("You must accept the Privacy Policy")')).toBeVisible();
+});

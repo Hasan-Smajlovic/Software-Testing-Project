@@ -35,10 +35,10 @@ class ZaraItemOrderPage{
 
     async selectItemCategory(text: string) {
         const linkSelector = `a span:has-text("${text}")`;
-    
+
         await this.page.waitForSelector(linkSelector);
         const category = await this.page.$(linkSelector);
-    
+
         if (category) {
             await category.click();
             await this.page.waitForLoadState('domcontentloaded');

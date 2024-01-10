@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import ZaraLoginPage from "../pages/ZaraLoginPage/ZaraLoginPage"
+import ZaraLoginPage from "../pages/ZaraLoginPage2";
 
 //test
 test('Zara login test', async ({page}) => {

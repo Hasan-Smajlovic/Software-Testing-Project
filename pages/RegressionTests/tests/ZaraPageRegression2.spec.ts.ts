@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
-import test2 from "../RegressionTesting/test2";
-import test1 from '../RegressionTesting/test1';
+import test2 from "../RegressionTesting/ZaraRegisterDataInvalidRegression2";
 
 test('Verify Register with data that is invalid', async ({page}) => {
     const zaraPage = new test2(page);

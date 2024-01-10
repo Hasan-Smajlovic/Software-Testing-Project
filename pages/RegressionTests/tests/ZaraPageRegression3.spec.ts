@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test';
-import ZaraLoginWithEmailErrorPage from '../pages/ZaraLoginWithEmailErrorPage';
+import { ZaraLoginPage } from '../pages/ZaraLoginPageRegression3';
 
 test('Log in with invalid email address at Zara', async ({ browser }) => {
     const context = await browser.newContext();
     const page = await context.newPage();
 
-    const zaraLoginPage = new ZaraLoginWithEmailErrorPage(page);
+    // Create an instance of the ZaraLoginPage
+    const zaraLoginPage = new ZaraLoginPage(page);
 
     // Step 1: Navigate to Zara's online page and wait for it to load
     await zaraLoginPage.navigateToZaraHomePage();
