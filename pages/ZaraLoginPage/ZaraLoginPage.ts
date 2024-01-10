@@ -1,4 +1,4 @@
-import {Page, BrowserContext } from "playwright"
+import {Page } from "playwright"
 
 class ZaraLoginPage {
     private page: Page;
